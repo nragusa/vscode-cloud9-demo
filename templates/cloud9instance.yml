@@ -17,12 +17,15 @@ Resources:
       Name: VS Code Remote SSH Demo
 
 Outputs:
-  Cloud9InstanceURL:
-    Description: The AWS Cloud9 EC2 instance ID
+  Cloud9Instance:
+    Description: The EC2 instance powering this AWS CLoud9 environment
     Value: 
       !Join 
         - ''
         - - 'https://'
           - !Ref AWS::Region
-          - '.console.aws.amazon.com/cloud9/ide/'
+          - '.console.aws.amazon.com/ec2/v2/home?region='
+          - !Ref AWS::Region
+          - '#Instances:search='
           - !Ref DefaultVPCCloud9Instance
+          - ';sort=tag:Name'
